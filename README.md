@@ -8,6 +8,12 @@ npm install -g koinos-sdk-as-cli
 yarn global add koinos-sdk-as-cli
 ```
 
+## Generate a contract boilerplate
+```sh
+# will generate "mycontract" in the current working folder
+koinos-sdk-as-cli generate mycontract
+```
+
 ## Important note
 - It important that your smart contract file lives in the `assembly` folder of your project. (i.e.: `./calculator/assembly/Calculator.ts`)
 - And, it is also important that your `proto` files live in the `assembly/proto/` folder of your project. (i.e.: `./calculator/assembly/proto/calculator.proto`)
