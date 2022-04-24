@@ -16,9 +16,8 @@
     "koinos-abi-proto-gen": "^0.1.11",
     "koinos-as-gen": "^0.4.8",
     "koinos-mock-vm": "^1.1.0",
-    "koinos-proto-as": "^0.4.1",
-    "koinos-sdk-as": "^0.4.10",
-    "koinos-sdk-as-cli": "^0.1.5",
+    "koinos-sdk-as": "##_SDK_VERSION_##",
+    "koinos-sdk-as-cli": "^##_CLI_VERSION_##",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.5",
     "yaml": "^2.0.0-11"
