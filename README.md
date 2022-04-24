@@ -13,10 +13,10 @@ npm install -g koinos-sdk-as-cli
 yarn global add koinos-sdk-as-cli
 ```
 
-## Generate a contract boilerplate
+## Create a contract boilerplate
 ```sh
-# will generate "mycontract" in the current working folder
-koinos-sdk-as-cli generate mycontract
+# will create "mycontract" in the current working folder
+koinos-sdk-as-cli create mycontract
 ```
 
 ## Important note
@@ -45,12 +45,6 @@ This will result in the generation of:
 - an `index.ts` file in the folder `calculator/assembly/`
 - a `Calculator.boilerplate.ts` file in the folder `calculator/assembly/`
   
-## Generate AssemblyScript files for all the proto files of a contract
-```sh
-# example for the calculator contract
-koinos-sdk-as-cli generate-contract-proto calculator
-```
-
 ## Generate ABI file
 ```sh
 # example for the calculator contract
@@ -65,6 +59,18 @@ koinos-sdk-as-cli generate-contract-as calculator calculator.proto
 ```
 
 This will generate a `Calculator.boilerplate.ts`file and `index.ts` file in the folder `calculator/assembly/`
+
+## Generate AssemblyScript files for all the proto files of a contract
+```sh
+# example for the calculator contract
+koinos-sdk-as-cli generate-contract-proto calculator
+```
+
+## Generate AS files for the given proto files
+```sh
+# example for the calculator contract
+koinos-sdk-as-cli generate-as-proto calculator/assembly/proto/calculator.proto
+```
 
 ## Run tests
 ```sh

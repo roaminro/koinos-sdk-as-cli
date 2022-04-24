@@ -149,15 +149,19 @@ program.command('generate-abi')
 program.command('generate-contract-as')
   .description('Generate contract.boilerplate.ts and index.ts files')
   .argument('<contractFolderPath>', 'Path to the contract folder')
-  .argument('<protoFileName>', 'Name of the contract proto file')
-  .argument('<additionalProtoFileNames...>', 'Name of the additional proto files')
+  .argument('<protoFileNames...>', 'Name of the contract proto files')
   .option('--generate_authorize', 'generate the authorize entry point')
-  .action((contractFolderPath, protoFileName, additionalProtoFileNames, options) => {
+  .action((contractFolderPath, protoFileNames, options) => {
     const generateAuthEndpoint = options.generate_authorize ? isWin ? 'set GENERATE_AUTHORIZE_ENTRY_POINT=1&&' : 'GENERATE_AUTHORIZE_ENTRY_POINT=1 ' : ''
+
+    // to make it easier for dapps devs, the first proto filename is considered to be the contract proto file
+    // that's the only one for which we auto populate the contract path
+    // the rest must have the full path to the proto files
+    protoFileNames[0] = `${contractFolderPath}/assembly/proto/${protoFileNames[0]}`
 
     // Generate CONTRACT.boilerplate.ts and index.ts files
     console.log(chalk.green('Generating boilerplate.ts and index.ts files...'))
-    const cmd = `${generateAuthEndpoint}yarn protoc --plugin=protoc-gen-as=${koinosASGenPath} --as_out=${contractFolderPath}/assembly/ ${contractFolderPath}/assembly/proto/${protoFileName} ${additionalProtoFileNames.join(' ')}`
+    const cmd = `${generateAuthEndpoint}yarn protoc --plugin=protoc-gen-as=${koinosASGenPath} --as_out=${contractFolderPath}/assembly/ ${protoFileNames.join(' ')}`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
@@ -165,11 +169,10 @@ program.command('generate-contract-as')
 program.command('generate-contract-proto')
   .description('Generate AS files for the contract proto files')
   .argument('<contractFolderPath>', 'Path to the contract folder')
-  .argument('<additionalProtoFileNames...>', 'Name of the additional proto files')
-  .action((contractFolderPath, additionalProtoFileNames) => {
+  .action((contractFolderPath) => {
     // compile proto file
     console.log(chalk.green('Generating Contract AS proto files...'))
-    const cmd = `yarn protoc --plugin=protoc-gen-as=${ASProtoGenPath} --as_out=. ${contractFolderPath}/assembly/proto/*.proto ${additionalProtoFileNames.join(' ')}`
+    const cmd = `yarn protoc --plugin=protoc-gen-as=${ASProtoGenPath} --as_out=. ${contractFolderPath}/assembly/proto/*.proto`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
@@ -195,9 +198,9 @@ program.command('run-tests')
     execSync(cmd, { stdio: 'inherit' })
   })
 
-program.command('generate')
-  .description('Generate a boilerplate contract')
-  .argument('<contractName>', 'Name of the contract to generate')
+program.command('create')
+  .description('Create a boilerplate contract')
+  .argument('<contractName>', 'Name of the contract to create')
   .action((contractName) => {
     const protoPackageName = contractName.toLowerCase()
     const templatePath = path.join(__dirname, '..', '__template__')
