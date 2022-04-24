@@ -4,4 +4,4 @@ build
 \.vs/
 *.wasm
 *.pb
-test
+mycontract

@@ -22,6 +22,6 @@
   "scripts": {
     "lint": "eslint --max-warnings 0 src/**/*.js",
     "prepublishOnly": "yarn lint",
-    "ci": "yarn link && yarn exec koinos-sdk-as-cli generate test && cd test && yarn install && yarn build:debug && yarn test && yarn unlink koinos-sdk-as-cli"
+    "ci": "yarn link && yarn exec koinos-sdk-as-cli generate mycontract && cd mycontract && yarn install && yarn link koinos-sdk-as-cli && yarn build:debug && yarn test && yarn unlink koinos-sdk-as-cli"
   }
 }
