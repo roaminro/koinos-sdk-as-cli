@@ -1,3 +1,19 @@
 #!/usr/bin/env node
 
-require('../src/index')
+const { spawn } = require('child_process')
+
+const args = [
+  require.resolve('../src/index'),
+  ...process.argv.slice(2)
+]
+
+const spawned = spawn('node', args, {
+  env: Object.assign({}, process.env, { FORCE_COLOR: '1' })
+})
+
+spawned.stdout.pipe(process.stdout)
+spawned.stderr.pipe(process.stderr)
+spawned.ref()
+spawned.on('exit', (code, _signal) => {
+  process.exit(code)
+})
