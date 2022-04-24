@@ -199,15 +199,15 @@ program.command('generate')
   .description('Generate a boilerplate contract')
   .argument('<contractName>', 'Name of the contract to generate')
   .action((contractName) => {
+    const protoPackageName = contractName.toLowerCase()
     const templatePath = path.join(__dirname, '..', '__template__')
-    const tartgetPath = path.join(CURR_DIR, contractName)
+    const tartgetPath = path.join(CURR_DIR, protoPackageName)
     console.log(chalk.green(`Generating contract at "${tartgetPath}"`))
 
     if (!createProject(tartgetPath)) {
       return
     }
 
-    const protoPackageName = contractName.toLowerCase()
     contractName = contractName.charAt(0).toUpperCase() + contractName.slice(1)
 
     createDirectoryContents(templatePath, contractName, contractName, protoPackageName)
