@@ -26,11 +26,4 @@ jobs:
       - name: Install dependencies
         run: yarn --frozen-lockfile
       - name: Run ci
-        run: |
-            npm link
-            koinos-sdk-as-cli create mycontract
-            cd mycontract 
-            npm install
-            npm link koinos-sdk-as-cli
-            koinos-sdk-as-cli build-all mycontract debug mycontract.proto
-            koinos-sdk-as-cli run-tests mycontract
+        run: npm run ci:windows
