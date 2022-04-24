@@ -24,8 +24,8 @@
   },
   "scripts": {
     "lint": "eslint --max-warnings 0 --ext ts \"*/assembly/**/*.ts\"",
-    "build:debug": "koinos-sdk-as-cli build-all ##_CONTRACT_NAME_## debug ##_PROTO_PACKAGE_##.proto ",
-    "build:release": "koinos-sdk-as-cli build-all ##_CONTRACT_NAME_## release ##_PROTO_PACKAGE_##.proto",
-    "test": "koinos-sdk-as-cli run-tests ##_CONTRACT_NAME_##"
+    "build:debug": "yarn exec koinos-sdk-as-cli build-all ##_CONTRACT_NAME_## debug ##_PROTO_PACKAGE_##.proto ",
+    "build:release": "yarn exec koinos-sdk-as-cli build-all ##_CONTRACT_NAME_## release ##_PROTO_PACKAGE_##.proto",
+    "test": "yarn exec koinos-sdk-as-cli run-tests ##_CONTRACT_NAME_##"
   }
 }
