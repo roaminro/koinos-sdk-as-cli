@@ -210,7 +210,7 @@ program.command('generate')
 
     contractName = contractName.charAt(0).toUpperCase() + contractName.slice(1)
 
-    createDirectoryContents(templatePath, contractName, contractName, protoPackageName)
+    createDirectoryContents(templatePath, protoPackageName, contractName, protoPackageName)
 
     console.log(chalk.green('Contract successfully generated!'))
     console.log(chalk.blue(`cd ${tartgetPath} && yarn install && yarn build:debug && yarn test`))
