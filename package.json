@@ -1,0 +1,26 @@
+{
+  "name": "koinos-sdk-as-cli",
+  "version": "0.1.0",
+  "main": "assembly/index.ts",
+  "license": "MIT",
+  "author": "Roamin Roe <roamin@tuta.io>",
+  "repository": "https://github.com/roaminroe/koinos-sdk-as-cli",
+  "bin": {
+    "koinos-sdk-as-cli": "bin/koinos-sdk-as-cli"
+  },
+  "dependencies": {
+    "chalk": "4.1.2",
+    "commander": "^9.0.0"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^5.2.0"
+  },
+  "scripts": {
+    "lint": "eslint --max-warnings 0 src/**/*.js",
+    "prepublishOnly": "yarn lint"
+  }
+}
