@@ -1,3 +1,8 @@
+![Test Ubuntu](https://github.com/roaminroe/koinos-sdk-as-cli/actions/workflows/test-ubuntu.yml/badge.svg)
+![Test Windows](https://github.com/roaminroe/koinos-sdk-as-cli/actions/workflows/test-windows.yml/badge.svg)
+![Test MacOS](https://github.com/roaminroe/koinos-sdk-as-cli/actions/workflows/test-macos.yml/badge.svg)
+
+
 ## Installation
 
 ```sh

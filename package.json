@@ -21,6 +21,7 @@
   },
   "scripts": {
     "lint": "eslint --max-warnings 0 src/**/*.js",
-    "prepublishOnly": "yarn lint"
+    "prepublishOnly": "yarn lint",
+    "ci": "node src/index.js generate test && cd test && yarn install && yarn build:debug && yarn test"
   }
 }
