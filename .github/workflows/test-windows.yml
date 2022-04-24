@@ -32,5 +32,5 @@ jobs:
             cd mycontract 
             npm install
             npm link koinos-sdk-as-cli
-            koinos-sdk-as-cli build-all mycontractdebug mycontract.proto
-            koinos-sdk-as-cli run-tests mycontractdebug
+            koinos-sdk-as-cli build-all mycontract debug mycontract.proto
+            koinos-sdk-as-cli run-tests mycontract
