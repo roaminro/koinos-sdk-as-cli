@@ -80,99 +80,94 @@ program
 
 program.command('build-all')
   .description('Build all Smart Contract files')
-  .argument('<contractFolderPath>', 'Path to the contract folder')
   .argument('<buildMode>', 'Build mode debug or realease')
   .argument('<protoFileNames...>', 'Name of the contract proto files')
   .option('--generate_authorize', 'generate the authorize entry point')
-  .action((contractFolderPath, buildMode, protoFileNames, options) => {
+  .action((buildMode, protoFileNames, options) => {
     const generateAuthEndpoint = options.generate_authorize ? isWin ? 'set GENERATE_AUTHORIZE_ENTRY_POINT=1&&' : 'GENERATE_AUTHORIZE_ENTRY_POINT=1 ' : ''
     const includeKoinosChainAuth = generateAuthEndpoint ? 'koinos/chain/authority.proto' : ''
 
     // to make it easier for dapps devs, the first proto filename is considered to be the contract proto file
     // that's the only one for which we auto populate the contract path
     // the rest must have the full path to the proto files
-    protoFileNames[0] = `${contractFolderPath}/assembly/proto/${protoFileNames[0]}`
+    protoFileNames[0] = `assembly/proto/${protoFileNames[0]}`
 
     // compile proto file
     console.log(chalk.green('Generating ABI file...'))
-    let cmd = `${generateAuthEndpoint} yarn protoc --plugin=protoc-gen-abi=${koinoABIGenPath} --abi_out=${contractFolderPath}/abi/ ${protoFileNames.join(' ')} ${includeKoinosChainAuth}`
+    let cmd = `${generateAuthEndpoint} yarn protoc --plugin=protoc-gen-abi=${koinoABIGenPath} --abi_out=abi/ ${protoFileNames.join(' ')} ${includeKoinosChainAuth}`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
 
     console.log(chalk.green('Generating proto files...'))
-    cmd = `yarn protoc --plugin=protoc-gen-as=${ASProtoGenPath} --as_out=. ${contractFolderPath}/assembly/proto/*.proto`
+    cmd = `yarn protoc --plugin=protoc-gen-as=${ASProtoGenPath} --as_out=. assembly/proto/*.proto`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
 
     // Generate CONTRACT.boilerplate.ts and index.ts files
     console.log(chalk.green('Generating boilerplate.ts and index.ts files...'))
-    cmd = `${generateAuthEndpoint}yarn protoc --plugin=protoc-gen-as=${koinosASGenPath} --as_out=${contractFolderPath}/assembly/ ${protoFileNames[0]}`
+    cmd = `${generateAuthEndpoint}yarn protoc --plugin=protoc-gen-as=${koinosASGenPath} --as_out=assembly/ ${protoFileNames[0]}`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
 
     // compile index.ts
     console.log(chalk.green('Compiling index.ts...'))
-    cmd = `node ./node_modules/assemblyscript/bin/asc ${contractFolderPath}/assembly/index.ts --target ${buildMode} --use abort= --config ${contractFolderPath}/asconfig.json`
+    cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --use abort= --config asconfig.json`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
 
 program.command('build')
   .description('Build index.ts file')
-  .argument('<contractFolderPath>', 'Path to the contract folder')
   .argument('<buildMode>', 'Build mode debug or realease')
-  .action((contractFolderPath, buildMode) => {
+  .action((buildMode) => {
     // compile index.ts
     console.log(chalk.green('Compiling index.ts...'))
-    const cmd = `node ./node_modules/assemblyscript/bin/asc ${contractFolderPath}/assembly/index.ts --target ${buildMode} --use abort= --config ${contractFolderPath}/asconfig.json`
+    const cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --use abort= --config asconfig.json`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
 
 program.command('generate-abi')
   .description('Generate ABI files')
-  .argument('<contractFolderPath>', 'Path to the contract folder')
   .argument('<protoFileNames...>', 'Name of the contract proto files')
-  .action((contractFolderPath, protoFileNames) => {
+  .action((protoFileNames) => {
     // to make it easier for dapps devs, the first proto filename is considered to be the contract proto file
     // that's the only one for which we auto populate the contract path
     // the rest must have the full path to the proto files
-    protoFileNames[0] = `${contractFolderPath}/assembly/proto/${protoFileNames[0]}`
+    protoFileNames[0] = `assembly/proto/${protoFileNames[0]}`
 
     // compile proto file
     console.log(chalk.green('Generating ABI file...'))
-    const cmd = `yarn protoc --plugin=protoc-gen-abi=${koinoABIGenPath} --abi_out=${contractFolderPath}/abi/ ${protoFileNames.join(' ')}`
+    const cmd = `yarn protoc --plugin=protoc-gen-abi=${koinoABIGenPath} --abi_out=abi/ ${protoFileNames.join(' ')}`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
 
 program.command('generate-contract-as')
   .description('Generate contract.boilerplate.ts and index.ts files')
-  .argument('<contractFolderPath>', 'Path to the contract folder')
   .argument('<protoFileNames...>', 'Name of the contract proto files')
   .option('--generate_authorize', 'generate the authorize entry point')
-  .action((contractFolderPath, protoFileNames, options) => {
+  .action((protoFileNames, options) => {
     const generateAuthEndpoint = options.generate_authorize ? isWin ? 'set GENERATE_AUTHORIZE_ENTRY_POINT=1&&' : 'GENERATE_AUTHORIZE_ENTRY_POINT=1 ' : ''
 
     // to make it easier for dapps devs, the first proto filename is considered to be the contract proto file
     // that's the only one for which we auto populate the contract path
     // the rest must have the full path to the proto files
-    protoFileNames[0] = `${contractFolderPath}/assembly/proto/${protoFileNames[0]}`
+    protoFileNames[0] = `assembly/proto/${protoFileNames[0]}`
 
     // Generate CONTRACT.boilerplate.ts and index.ts files
     console.log(chalk.green('Generating boilerplate.ts and index.ts files...'))
-    const cmd = `${generateAuthEndpoint}yarn protoc --plugin=protoc-gen-as=${koinosASGenPath} --as_out=${contractFolderPath}/assembly/ ${protoFileNames.join(' ')}`
+    const cmd = `${generateAuthEndpoint}yarn protoc --plugin=protoc-gen-as=${koinosASGenPath} --as_out=assembly/ ${protoFileNames.join(' ')}`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
 
 program.command('generate-contract-proto')
   .description('Generate AS files for the contract proto files')
-  .argument('<contractFolderPath>', 'Path to the contract folder')
-  .action((contractFolderPath) => {
+  .action(() => {
     // compile proto file
     console.log(chalk.green('Generating Contract AS proto files...'))
-    const cmd = `yarn protoc --plugin=protoc-gen-as=${ASProtoGenPath} --as_out=. ${contractFolderPath}/assembly/proto/*.proto`
+    const cmd = `yarn protoc --plugin=protoc-gen-as=${ASProtoGenPath} --as_out=. assembly/proto/*.proto`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
@@ -190,10 +185,9 @@ program.command('generate-as-proto')
 
 program.command('run-tests')
   .description('Run contract tests')
-  .argument('<contractFolderPath>', 'Path to the contract folder')
-  .action((contractFolderPath) => {
+  .action(() => {
     console.log(chalk.green('Running tests...'))
-    const cmd = `yarn asp --verbose --config ${contractFolderPath}/as-pect.config.js`
+    const cmd = 'yarn asp --verbose --config as-pect.config.js'
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
@@ -205,7 +199,7 @@ program.command('create')
     const protoPackageName = contractName.toLowerCase()
     const templatePath = path.join(__dirname, '..', '__template__')
     const tartgetPath = path.join(CURR_DIR, protoPackageName)
-    console.log(chalk.green(`Generating contract at "${tartgetPath}"`))
+    console.log(chalk.green(`Generating contract at "${tartgetPath}" ...`))
 
     if (!createProject(tartgetPath)) {
       return
@@ -215,8 +209,13 @@ program.command('create')
 
     createDirectoryContents(templatePath, protoPackageName, contractName, protoPackageName)
 
+    console.log('')
     console.log(chalk.green('Contract successfully generated!'))
-    console.log(chalk.blue(`cd ${tartgetPath} && yarn install && yarn build:debug && yarn test`))
+    console.log('')
+    console.log(chalk.green("You're all set! Run the following set of commands to verify that the generated contract is correctly setup:"))
+    console.log('')
+    console.log(chalk.blue(`  cd ${tartgetPath} && yarn install && yarn build:debug && yarn test`))
+    console.log('')
   })
 
 program.parse()
