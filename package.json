@@ -24,6 +24,6 @@
     "lint": "eslint --max-warnings 0 src/**/*.js",
     "prepublishOnly": "yarn lint",
     "ci": "yarn link && koinos-sdk-as-cli create mycontract && cd mycontract && yarn install && yarn link koinos-sdk-as-cli && yarn build:debug && yarn test",
-    "ci:windows": "npm link && koinos-sdk-as-cli create mycontract && cd mycontract && npm install && npm link koinos-sdk-as-cli && koinos-sdk-as-cli build-all mycontract debug mycontract.proto && koinos-sdk-as-cli run-tests mycontract"
+    "ci:windows": "npm link && koinos-sdk-as-cli create mycontract && cd mycontract && npm install && npm link koinos-sdk-as-cli && koinos-sdk-as-cli build-all debug mycontract.proto && koinos-sdk-as-cli run-tests"
   }
 }
