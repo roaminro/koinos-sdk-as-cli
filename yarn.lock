@@ -875,10 +875,9 @@ koinos-proto-as@^0.4.1:
   dependencies:
     as-proto "^0.2.2"
 
-koinos-sdk-as@^0.4.10:
-  version "0.4.10"
-  resolved "https://registry.yarnpkg.com/koinos-sdk-as/-/koinos-sdk-as-0.4.10.tgz#91c95794f77f62ac54084464037835811b2b6f8b"
-  integrity sha512-uZHTvwfUbNS4KROJtFfsOia9AAolD8uoh3zziDqXc7jfLxHJ87zOBMjKQEINRwhsAPmKnbRiG12RszO/DSjOXg==
+koinos-sdk-as@koinos/koinos-sdk-as#3b83344d93c0d71f077c1b86a70962649c19855c:
+  version "0.4.11"
+  resolved "https://codeload.github.com/koinos/koinos-sdk-as/tar.gz/3b83344d93c0d71f077c1b86a70962649c19855c"
   dependencies:
     as-bignum "^0.2.18"
     as-proto "^0.2.2"
