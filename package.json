@@ -1,6 +1,6 @@
 {
   "name": "koinos-sdk-as-cli",
-  "version": "0.1.10",
+  "version": "0.1.11",
   "main": "src/index.js",
   "license": "MIT",
   "author": "Roamin Roe <roamin@tuta.io>",
@@ -19,7 +19,7 @@
     "eslint-plugin-import": "^2.25.4",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.2.0",
-    "koinos-sdk-as": "koinos/koinos-sdk-as#3b83344d93c0d71f077c1b86a70962649c19855c"
+    "koinos-sdk-as": "koinos/koinos-sdk-as#a661b59c08f1af04a6d75da3082fcc670c03b593"
   },
   "scripts": {
     "lint": "eslint --max-warnings 0 src/**/*.js",

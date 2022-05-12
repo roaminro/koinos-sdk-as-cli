@@ -15,7 +15,7 @@
     "eslint": "^8.7.0",
     "koinos-abi-proto-gen": "^0.1.11",
     "koinos-as-gen": "^0.4.8",
-    "koinos-mock-vm": "^1.1.0",
+    "koinos-mock-vm": "^1.1.2",
     "koinos-sdk-as": "##_SDK_VERSION_##",
     "koinos-sdk-as-cli": "^##_CLI_VERSION_##",
     "ts-node": "^10.4.0",

@@ -5,7 +5,7 @@ describe('contract', () => {
   it("should return 'hello, NAME!'", () => {
     const c = new ##_CONTRACT_NAME_##();
 
-    const args = new ##_PROTO_PACKAGE_## .hello_arguments('World');
+    const args = new ##_PROTO_PACKAGE_##.hello_arguments('World');
     const res = c.hello(args);
 
     expect(res.value).toStrictEqual('Hello, World!');
