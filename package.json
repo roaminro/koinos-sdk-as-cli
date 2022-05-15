@@ -1,6 +1,6 @@
 {
   "name": "koinos-sdk-as-cli",
-  "version": "0.1.14",
+  "version": "0.1.15",
   "main": "src/index.js",
   "license": "MIT",
   "author": "Roamin Roe <roamin@tuta.io>",

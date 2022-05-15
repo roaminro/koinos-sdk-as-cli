@@ -197,18 +197,23 @@ program.command('run-tests')
 
 program.command('create')
   .description('Create a boilerplate contract')
-  .argument('<contractName>', 'Name of the contract to create')
+  .argument('<contractName>', 'Name of the contract to create [a-z0-9_]')
   .action((contractName) => {
     const protoPackageName = contractName.toLowerCase().trim()
     const templatePath = path.join(__dirname, '..', '__template__')
     const tartgetPath = path.join(CURR_DIR, protoPackageName)
     console.log(chalk.green(`Generating contract at "${tartgetPath}" ...`))
 
+    if (!/^[a-z0-9_]+$/g.test(contractName)) {
+      console.log(chalk.red(`Contract name "${contractName}" is invalid. Only [a-z0-9_] are allowed.`))
+      return
+    }
+
     if (!createProject(tartgetPath)) {
       return
     }
 
-    contractName = contractName.charAt(0).toUpperCase() + contractName.slice(1)
+    contractName = protoPackageName.charAt(0).toUpperCase() + protoPackageName.slice(1)
 
     createDirectoryContents(templatePath, protoPackageName, contractName, protoPackageName)
 
