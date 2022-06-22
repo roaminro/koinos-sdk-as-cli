@@ -84,8 +84,8 @@ program
 program.command('build-all')
   .description('Build all Smart Contract files')
   .argument('<buildMode>', 'Build mode debug or release')
+  .argument('<testing>', 'Build with testing flag (1/0)')
   .argument('<protoFileNames...>', 'Name of the contract proto files')
-  .argument('[testing]', 'Build with testing flag (1/0)', 0)
   .option('--generate_authorize', 'generate the authorize entry point')
   .action((buildMode, protoFileNames, testing, options) => {
     const generateAuthEndpoint = options.generate_authorize ? isWin ? 'set GENERATE_AUTHORIZE_ENTRY_POINT=1&&' : 'GENERATE_AUTHORIZE_ENTRY_POINT=1 ' : ''
