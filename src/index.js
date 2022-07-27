@@ -115,7 +115,7 @@ program.command('build-all')
 
     // compile index.ts
     console.log(chalk.green('Compiling index.ts...'))
-    cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --use abort= --use BUILD_FOR_TESTING=${testing} --config asconfig.json`
+    cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --use abort= --use BUILD_FOR_TESTING=${testing} --disable sign-extension --config asconfig.json`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
@@ -127,7 +127,7 @@ program.command('build')
   .action((buildMode, testing) => {
     // compile index.ts
     console.log(chalk.green('Compiling index.ts...'))
-    const cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --use abort= --use BUILD_FOR_TESTING=${testing} --config asconfig.json`
+    const cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --use abort= --use BUILD_FOR_TESTING=${testing} --disable sign-extension --config asconfig.json`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
