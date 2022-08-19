@@ -95,6 +95,7 @@ program.command('build-all')
     // that's the only one for which we auto populate the contract path
     // the rest must have the full path to the proto files
     protoFileNames[0] = `assembly/proto/${protoFileNames[0]}`
+    console.log(`${protoFileNames}`)
 
     // compile proto file
     console.log(chalk.green('Generating ABI file...'))
