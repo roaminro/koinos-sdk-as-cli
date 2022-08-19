@@ -87,7 +87,7 @@ program.command('build-all')
   .argument('<testing>', 'Build with testing flag (1/0)')
   .argument('<protoFileNames...>', 'Name of the contract proto files')
   .option('--generate_authorize', 'generate the authorize entry point')
-  .action((buildMode, protoFileNames, testing, options) => {
+  .action((buildMode, testing, protoFileNames, options) => {
     const generateAuthEndpoint = options.generate_authorize ? isWin ? 'set GENERATE_AUTHORIZE_ENTRY_POINT=1&&' : 'GENERATE_AUTHORIZE_ENTRY_POINT=1 ' : ''
     const includeKoinosChainAuth = generateAuthEndpoint ? 'koinos/chain/authority.proto' : ''
 
