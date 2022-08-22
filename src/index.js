@@ -61,8 +61,8 @@ function createDirectoryContents (templatePath, projectName, contractName, proto
       content = content.replaceAll('##_CONTRACT_NAME_##', contractName)
       content = content.replaceAll('##_PROTO_PACKAGE_##', protoPackageName)
       content = content.replaceAll('##_CLI_VERSION_##', packageJson.version)
-      content = content.replaceAll('##_SDK_VERSION_##', packageJson.devDependencies['koinos-sdk-as'])
-      content = content.replaceAll('##_MOCK_VM_VERSION_##', packageJson.devDependencies['koinos-mock-vm'])
+      content = content.replaceAll('##_SDK_VERSION_##', packageJson.devDependencies['@koinos/sdk-as'])
+      content = content.replaceAll('##_MOCK_VM_VERSION_##', packageJson.devDependencies['@koinos/mock-vm'])
 
       // write file to destination folder
       const writePath = path.join(CURR_DIR, projectName, destFile)
@@ -87,7 +87,7 @@ program.command('build-all')
   .argument('<testing>', 'Build with testing flag (1/0)')
   .argument('<protoFileNames...>', 'Name of the contract proto files')
   .option('--generate_authorize', 'generate the authorize entry point')
-  .action((buildMode, protoFileNames, testing, options) => {
+  .action((buildMode, testing, protoFileNames, options) => {
     const generateAuthEndpoint = options.generate_authorize ? isWin ? 'set GENERATE_AUTHORIZE_ENTRY_POINT=1&&' : 'GENERATE_AUTHORIZE_ENTRY_POINT=1 ' : ''
     const includeKoinosChainAuth = generateAuthEndpoint ? 'koinos/chain/authority.proto' : ''
 
