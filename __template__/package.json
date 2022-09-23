@@ -10,22 +10,20 @@
     "@koinos/abi-proto-gen": "^0.4.0",
     "@koinos/mock-vm": "##_MOCK_VM_VERSION_##",
     "@koinos/sdk-as": "##_SDK_VERSION_##",
-    "@koinos/sdk-as-cli": "^##_CLI_VERSION_##",
-    "@roaminroe/as-proto-gen": "^0.4.2",
-    "@roaminroe/protoc": "^2.4.0",
+    "@koinos/as-proto-gen": "^0.4.3",
+    "@roamin/protoc": "^2.4.0",
     "@typescript-eslint/eslint-plugin": "^5.10.0",
     "@typescript-eslint/parser": "^5.10.0",
     "assemblyscript": "^0.19.22",
     "eslint": "^8.7.0",
-    "koinos-as-gen": "^0.4.8",
     "ts-node": "^10.4.0",
     "typescript": "^4.5.5",
     "yaml": "^2.0.0-11"
   },
   "scripts": {
     "lint": "eslint --max-warnings 0 --ext ts \"*/assembly/**/*.ts\"",
-    "build:debug": "koinos-sdk-as-cli build-all debug ##_PROTO_PACKAGE_##.proto",
-    "build:release": "koinos-sdk-as-cli build-all release ##_PROTO_PACKAGE_##.proto",
+    "build:debug": "koinos-sdk-as-cli build-all debug 0 ##_PROTO_PACKAGE_##.proto",
+    "build:release": "koinos-sdk-as-cli build-all release 0 ##_PROTO_PACKAGE_##.proto",
     "test": "koinos-sdk-as-cli run-tests"
   }
 }

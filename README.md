@@ -1,16 +1,16 @@
-![Test Ubuntu](https://github.com/roaminroe/koinos-sdk-as-cli/actions/workflows/test-ubuntu.yml/badge.svg)
-![Test Windows](https://github.com/roaminroe/koinos-sdk-as-cli/actions/workflows/test-windows.yml/badge.svg)
-![Test MacOS](https://github.com/roaminroe/koinos-sdk-as-cli/actions/workflows/test-macos.yml/badge.svg)
+![Test Ubuntu](https://github.com/koinos/koinos-sdk-as-cli/actions/workflows/test-ubuntu.yml/badge.svg)
+![Test Windows](https://github.com/koinos/koinos-sdk-as-cli/actions/workflows/test-windows.yml/badge.svg)
+![Test MacOS](https://github.com/koinos/koinos-sdk-as-cli/actions/workflows/test-macos.yml/badge.svg)
 
 
 ## Installation
 
 ```sh
 # with npm
-npm install -g koinos-sdk-as-cli
+npm install -g @koinos/sdk-as-cli
 
 # with yarn
-yarn global add koinos-sdk-as-cli
+yarn global add @koinos/sdk-as-cli
 ```
 
 ## Create a contract boilerplate
