@@ -5,12 +5,12 @@
 # build the debug version
 yarn build:debug
 # or
-yarn exec koinos-sdk-as-cli build-all debug ##_PROTO_PACKAGE_##.proto 
+yarn exec koinos-sdk-as-cli build-all debug 0 ##_PROTO_PACKAGE_##.proto 
 
 # build the release version
 yarn build:release
 # or
-yarn exec koinos-sdk-as-cli build-all release ##_PROTO_PACKAGE_##.proto 
+yarn exec koinos-sdk-as-cli build-all release 0 ##_PROTO_PACKAGE_##.proto 
 ```
 
 ## Test
