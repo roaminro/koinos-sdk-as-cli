@@ -1,6 +1,6 @@
 {
   "name": "@koinos/sdk-as-cli",
-  "version": "0.4.2",
+  "version": "1.0.0",
   "main": "src/index.js",
   "license": "MIT",
   "author": "Koinos Group <contact@koinos.group>",
@@ -14,8 +14,8 @@
     "commander": "^9.0.0"
   },
   "devDependencies": {
-    "@koinos/mock-vm": "^0.4.2",
-    "@koinos/sdk-as": "^0.4.4",
+    "@koinos/mock-vm": "^1.0.0",
+    "@koinos/sdk-as": "^0.4.10",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
