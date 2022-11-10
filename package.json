@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@koinos/mock-vm": "^0.4.1",
-    "@koinos/sdk-as": "^0.4.1",
+    "@koinos/sdk-as": "github:roaminro/koinos-sdk-as#4479cec40e5111b31865a2cc3e9f2eee51915de4",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
