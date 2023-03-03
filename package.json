@@ -1,6 +1,6 @@
 {
   "name": "@koinos/sdk-as-cli",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "src/index.js",
   "license": "MIT",
   "author": "Koinos Group <contact@koinos.group>",
@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "@koinos/mock-vm": "^1.0.0",
-    "@koinos/sdk-as": "^0.4.10",
+    "@koinos/sdk-as": "^1.0.2",
     "eslint": "^7.32.0",
     "eslint-config-standard": "^16.0.3",
     "eslint-plugin-import": "^2.25.4",
@@ -26,6 +26,6 @@
     "lint": "eslint --max-warnings 0 src/**/*.js",
     "prepublishOnly": "yarn lint",
     "ci": "yarn link && koinos-sdk-as-cli create mycontract && cd mycontract && yarn install && yarn link @koinos/sdk-as-cli && yarn build:debug && yarn test && cd .. && yarn unlink",
-    "ci:windows": "npm link && koinos-sdk-as-cli create mycontract && cd mycontract && npm install && npm link @koinos/sdk-as-cli && koinos-sdk-as-cli build-all debug 0 mycontract.proto && koinos-sdk-as-cli run-tests && cd .. && npm unlink"
+    "ci:windows": "npm link && koinos-sdk-as-cli create mycontract && cd mycontract && npm install && npm link @koinos/sdk-as-cli && koinos-sdk-as-cli build-all debug 0 mycontract.proto && koinos-sdk-as-cli run-tests"
   }
 }
