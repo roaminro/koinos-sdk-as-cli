@@ -1,14 +1,15 @@
 {
+  "extends": "./node_modules/@assemblyscript/wasi-shim/asconfig.json",
   "targets": {
     "debug": {
-      "binaryFile": "build/debug/contract.wasm",
-      "textFile": "build/debug/contract.wat",
+      "binaryFile": "build/debug/debug.wasm",
+      "textFile": "build/debug/debug.wat",
       "sourceMap": true,
       "debug": true
     },
     "release": {
-      "binaryFile": "build/release/contract.wasm",
-      "textFile": "build/release/contract.wat",
+      "binaryFile": "build/release/release.wasm",
+      "textFile": "build/release/release.wat",
       "sourceMap": true,
       "optimizeLevel": 3,
       "shrinkLevel": 0,
@@ -16,5 +17,7 @@
       "noAssert": false
     }
   },
-  "options": {}
+  "options": {
+    "bindings": "esm"
+  }
 }

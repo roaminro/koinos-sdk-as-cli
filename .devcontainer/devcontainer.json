@@ -1,0 +1,16 @@
+// See https://containers.dev/implementors/json_reference/ for configuration reference
+{
+  "name": "koinos-sdk-as-cli",
+  "build": {
+    "dockerfile": "Dockerfile"
+  },
+  "initializeCommand": "if [ \"${CODESPACES}\" != \"true\" ]; then umask 177 && touch ~/.npmrc; fi",
+  "postCreateCommand": "yarn install",
+  "remoteUser": "node",
+  "features": {
+    "ghcr.io/devcontainers/features/node:1": {}
+  },
+  "mounts": [
+    "source=${localEnv:HOME}/.npmrc,target=/home/node/.npmrc,type=bind"
+  ]
+}
