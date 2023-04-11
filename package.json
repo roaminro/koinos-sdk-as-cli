@@ -1,6 +1,6 @@
 {
   "name": "@koinos/sdk-as-cli",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "src/index.js",
   "license": "MIT",
   "author": "Koinos Group <contact@koinos.group>",
