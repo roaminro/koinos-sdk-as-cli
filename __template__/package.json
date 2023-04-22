@@ -7,7 +7,7 @@
   },
   "devDependencies": {
     "@as-covers/core": "^0.4.2",
-    "@as-pect/cli": "^8.0.1",
+    "@as-pect/cli": "^8.1.0",
     "@koinos/abi-proto-gen": "github:roaminro/koinos-abi-proto-gen#b0a4b0a843e95b3a58bfea284a33f68ac71d7b37",
     "@koinos/as-proto-gen": "^1.0.3",
     "@koinos/mock-vm": "##_MOCK_VM_VERSION_##",
