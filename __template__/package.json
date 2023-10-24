@@ -8,7 +8,7 @@
   "devDependencies": {
     "@as-covers/core": "^0.4.2",
     "@as-pect/cli": "^8.1.0",
-    "@koinos/abi-proto-gen": "github:koinos/koinos-abi-proto-gen#19cf0a276ed7c8a35b26b448e9ee149e697c2500",
+    "@koinos/abi-proto-gen": "github:roaminro/koinos-abi-proto-gen#4df119f3c304113638598159219554697ab19851",
     "@koinos/as-proto-gen": "^1.0.3",
     "@koinos/mock-vm": "##_MOCK_VM_VERSION_##",
     "@koinos/sdk-as": "##_SDK_VERSION_##",
@@ -27,8 +27,8 @@
   },
   "scripts": {
     "lint": "eslint --max-warnings 0 --ext ts \"*/assembly/**/*.ts\"",
-    "build:debug": "koinos-sdk-as-cli build-all debug 0 ##_PROTO_PACKAGE_##.proto",
-    "build:release": "koinos-sdk-as-cli build-all release 0 ##_PROTO_PACKAGE_##.proto",
+    "build:debug": "koinos-sdk-as-cli build-all debug ##_PROTO_PACKAGE_##.proto",
+    "build:release": "koinos-sdk-as-cli build-all release ##_PROTO_PACKAGE_##.proto",
     "test": "koinos-sdk-as-cli run-tests",
     "ci": "jest -i",
     "ci:devcontainer": "ENV=DEVCONTAINER jest -i"

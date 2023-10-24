@@ -84,10 +84,9 @@ program
 program.command('build-all')
   .description('Build all Smart Contract files')
   .argument('<buildMode>', 'Build mode debug or release')
-  .argument('<testing>', 'Build with testing flag (1/0)')
   .argument('<protoFileNames...>', 'Name of the contract proto files')
   .option('--generate_authorize', 'generate the authorize entry point')
-  .action((buildMode, testing, protoFileNames, options) => {
+  .action((buildMode, protoFileNames, options) => {
     const generateAuthEndpoint = options.generate_authorize ? isWin ? 'set GENERATE_AUTHORIZE_ENTRY_POINT=1&&' : 'GENERATE_AUTHORIZE_ENTRY_POINT=1 ' : ''
     const includeKoinosChainAuth = generateAuthEndpoint ? 'koinos/chain/authority.proto' : ''
 
@@ -115,7 +114,7 @@ program.command('build-all')
 
     // compile index.ts
     console.log(chalk.green('Compiling index.ts...'))
-    cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --use abort= --use BUILD_FOR_TESTING=${testing} --disable sign-extension --disableWarning=235 --exportStart _start --disable bulk-memory --config asconfig.json`
+    cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --config asconfig.json`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
@@ -123,11 +122,10 @@ program.command('build-all')
 program.command('build')
   .description('Build index.ts file')
   .argument('<buildMode>', 'Build mode debug or release')
-  .argument('[testing]', 'Build with testing flag (1/0)', 0)
-  .action((buildMode, testing) => {
+  .action((buildMode) => {
     // compile index.ts
     console.log(chalk.green('Compiling index.ts...'))
-    const cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --use abort= --use BUILD_FOR_TESTING=${testing} --disable sign-extension --disableWarning=235 --exportStart _start --disable bulk-memory --config asconfig.json`
+    const cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --config asconfig.json`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
