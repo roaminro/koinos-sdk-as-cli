@@ -9,6 +9,9 @@
     "resolveJsonModule": true,
     "esModuleInterop": true
   },
+  "ts-node": {
+    "esm": true
+  },
   "exclude": [
     "node_modules",
     "assembly/**"
