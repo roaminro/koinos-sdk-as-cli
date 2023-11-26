@@ -63,6 +63,7 @@ function createDirectoryContents (templatePath, projectName, contractName, proto
       content = content.replaceAll('##_CLI_VERSION_##', packageJson.version)
       content = content.replaceAll('##_SDK_VERSION_##', packageJson.devDependencies['@koinos/sdk-as'])
       content = content.replaceAll('##_MOCK_VM_VERSION_##', packageJson.devDependencies['@koinos/mock-vm'])
+      content = content.replaceAll('##_LOCAL_KOINOS_VERSION_##', packageJson.devDependencies['@roamin/local-koinos'])
 
       // write file to destination folder
       const writePath = path.join(CURR_DIR, projectName, destFile)
@@ -84,10 +85,9 @@ program
 program.command('build-all')
   .description('Build all Smart Contract files')
   .argument('<buildMode>', 'Build mode debug or release')
-  .argument('<testing>', 'Build with testing flag (1/0)')
   .argument('<protoFileNames...>', 'Name of the contract proto files')
   .option('--generate_authorize', 'generate the authorize entry point')
-  .action((buildMode, testing, protoFileNames, options) => {
+  .action((buildMode, protoFileNames, options) => {
     const generateAuthEndpoint = options.generate_authorize ? isWin ? 'set GENERATE_AUTHORIZE_ENTRY_POINT=1&&' : 'GENERATE_AUTHORIZE_ENTRY_POINT=1 ' : ''
     const includeKoinosChainAuth = generateAuthEndpoint ? 'koinos/chain/authority.proto' : ''
 
@@ -115,7 +115,7 @@ program.command('build-all')
 
     // compile index.ts
     console.log(chalk.green('Compiling index.ts...'))
-    cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --use abort= --use BUILD_FOR_TESTING=${testing} --disable sign-extension --config asconfig.json`
+    cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --config asconfig.json`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
@@ -123,11 +123,10 @@ program.command('build-all')
 program.command('build')
   .description('Build index.ts file')
   .argument('<buildMode>', 'Build mode debug or release')
-  .argument('[testing]', 'Build with testing flag (1/0)', 0)
-  .action((buildMode, testing) => {
+  .action((buildMode) => {
     // compile index.ts
     console.log(chalk.green('Compiling index.ts...'))
-    const cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --use abort= --use BUILD_FOR_TESTING=${testing} --disable sign-extension --config asconfig.json`
+    const cmd = `node ./node_modules/assemblyscript/bin/asc assembly/index.ts --target ${buildMode} --config asconfig.json`
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
@@ -192,7 +191,7 @@ program.command('run-tests')
   .description('Run contract tests')
   .action(() => {
     console.log(chalk.green('Running tests...'))
-    const cmd = 'yarn asp --verbose --config as-pect.config.js'
+    const cmd = 'yarn asp --verbose'
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
@@ -224,7 +223,7 @@ program.command('create')
     console.log('')
     console.log(chalk.green("You're all set! Run the following set of commands to verify that the generated contract is correctly setup:"))
     console.log('')
-    console.log(chalk.blue(`  cd ${tartgetPath} && yarn install && yarn build:debug && yarn test`))
+    console.log(chalk.blue(`  cd ${tartgetPath} && yarn install && yarn build:release && yarn test && yarn ci`))
     console.log('')
   })
 
