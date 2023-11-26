@@ -10,7 +10,7 @@ jest.setTimeout(600000);
 
 let localKoinos = new LocalKoinos();
 
-if (process.env.ENV === 'DEVCONTAINER') {
+if (process.env.DEVCONTAINER === 'true') {
   localKoinos = new LocalKoinos({
     rpc: 'http://host.docker.internal:8080',
     amqp: 'amqp://host.docker.internal:5672'

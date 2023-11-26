@@ -17,8 +17,12 @@
     "exportRuntime": true,
     "use": ["RTRACE=1"],
     "debug": true,
-    "exportTable": true
+    "exportTable": true,
+    "disable": [
+      "sign-extension", 
+      "bulk-memory"
+    ],
+    "disableWarning": "235"
   },
-  "extends": "./asconfig.json",
   "entries": ["./node_modules/@as-pect/assembly/assembly/index.ts"]
 }

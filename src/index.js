@@ -63,6 +63,7 @@ function createDirectoryContents (templatePath, projectName, contractName, proto
       content = content.replaceAll('##_CLI_VERSION_##', packageJson.version)
       content = content.replaceAll('##_SDK_VERSION_##', packageJson.devDependencies['@koinos/sdk-as'])
       content = content.replaceAll('##_MOCK_VM_VERSION_##', packageJson.devDependencies['@koinos/mock-vm'])
+      content = content.replaceAll('##_LOCAL_KOINOS_VERSION_##', packageJson.devDependencies['@roamin/local-koinos'])
 
       // write file to destination folder
       const writePath = path.join(CURR_DIR, projectName, destFile)
@@ -190,7 +191,7 @@ program.command('run-tests')
   .description('Run contract tests')
   .action(() => {
     console.log(chalk.green('Running tests...'))
-    const cmd = 'yarn asp --verbose --config as-pect.config.js'
+    const cmd = 'yarn asp --verbose'
     console.log(chalk.blue(cmd))
     execSync(cmd, { stdio: 'inherit' })
   })
@@ -222,7 +223,7 @@ program.command('create')
     console.log('')
     console.log(chalk.green("You're all set! Run the following set of commands to verify that the generated contract is correctly setup:"))
     console.log('')
-    console.log(chalk.blue(`  cd ${tartgetPath} && yarn install && yarn build:debug && yarn test`))
+    console.log(chalk.blue(`  cd ${tartgetPath} && yarn install && yarn build:release && yarn test && yarn ci`))
     console.log('')
   })
 
