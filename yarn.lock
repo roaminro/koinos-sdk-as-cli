@@ -547,16 +547,16 @@
   dependencies:
     google-protobuf "^3.21.0"
 
-"@roamin/local-koinos@^0.4.12":
-  version "0.4.12"
-  resolved "https://registry.yarnpkg.com/@roamin/local-koinos/-/local-koinos-0.4.12.tgz#d9ba101a7357f3aa96abf2fe674f78eb7072a5db"
-  integrity sha512-HzEkF92lzQlr3PGepoZkRhEZkNH3wJXyDR4bpkVNQSE/fHctaqv9cXUywXp0r+Lvk3U4X6kAaj1hGm7EwWbIDA==
+"@roamin/local-koinos@^0.4.16":
+  version "0.4.16"
+  resolved "https://registry.yarnpkg.com/@roamin/local-koinos/-/local-koinos-0.4.16.tgz#98f4f1b1c664b3caccf72f81e89e50412b740182"
+  integrity sha512-X3KE6itGLF4uquTegY1m1fvCfq8xOuyqGOgrLlSVXNOS1ldkVNY40PAKYW9kN/U7pQnzVgvMqyapNVcQVGiUbw==
   dependencies:
     "@koinos/proto-js" "^1.0.3"
     amqplib "^0.9.1"
     chalk "4.1.2"
     commander "^9.0.0"
-    koilib "^5.2.2"
+    koilib "5.6.1"
 
 "@roamin/protoc@^2.4.0":
   version "2.4.0"
@@ -3005,7 +3005,7 @@ just-diff@^5.0.1:
   resolved "https://registry.yarnpkg.com/just-diff/-/just-diff-5.2.0.tgz#60dca55891cf24cd4a094e33504660692348a241"
   integrity sha512-6ufhP9SHjb7jibNFrNxyFZ6od3g+An6Ai9mhGRvcYe8UJlH0prseN64M+6ZBBUoKYHZsitDP42gAJ8+eVWr3lw==
 
-koilib@^5.2.2:
+koilib@5.6.1:
   version "5.6.1"
   resolved "https://registry.yarnpkg.com/koilib/-/koilib-5.6.1.tgz#72f61455959ce00c23ec19d99467cb75e999985b"
   integrity sha512-Ulon6gOYIVf11XzQ18BwY/p6VHdQ3JyIgqgZ/RsATg/VuUUvWoZ8w4nPNBBMohPhXh5lmu/O1E/wQ8BGxfpEvg==
